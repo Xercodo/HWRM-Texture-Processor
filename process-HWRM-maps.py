@@ -11,7 +11,7 @@ def process_HWRM_maps(image, __unused_drawable):
     HWMaps = gimp.Image(image.width, image.height, RGB)
     
     for layer in image.layers:
-        if "_GLOW.dds" in layer.name:
+        if "_glow.dds" in layer.name.lower():
             glowLayer = layer
             
             redGLOW, greenGLOW, blueGLOW, alphaGLOW = pdb.plug_in_decompose(image, glowLayer, type, mode)
@@ -67,7 +67,7 @@ def process_HWRM_maps(image, __unused_drawable):
             pdb.gimp_image_delete(glowImage)
             pdb.gimp_image_delete(specImage)
             
-        elif "_TEAM.dds" in layer.name:
+        elif "_team.dds" in layer.name.lower():
             teamLayer = layer
             
             redTEAM, greenTEAM, blueTEAM, alphaTEAM = pdb.plug_in_decompose(image, teamLayer, type, mode)
